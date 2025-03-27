@@ -12,5 +12,9 @@
 		<li><a href="/sakila/db0326/filmList.jsp">영화목록</a></li>
 		<li><a href="/sakila/db0326/actorList.jsp">배우목록</a></li>
 	</ol>
+	
+	<ol>
+		<li><a href="/sakila/db0327/inventoryList.jsp">인벤토리목록</a></li>
+	</ol>
 </body>
 </html>
