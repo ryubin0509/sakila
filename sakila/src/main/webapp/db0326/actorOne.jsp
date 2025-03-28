@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 <%@ page import="java.sql.*" %>
+<%
+Integer staffId =  (Integer)(session.getAttribute("loginStaff"));
+
+if(staffId == null){
+	 response.sendRedirect("/sakila/loginForm.jsp");
+}
+
+%>
 <% 
 	int currentPage = 1; // 현재페이지
 	if(request.getParameter("currentPage") != null){
@@ -78,10 +86,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet"  type="text/css"href="/sakila/style.css">
 <meta charset="UTF-8">
 <title></title>
 </head>
 <body>
+	<div>
+		<%=staffId%>님 반갑습니다.
+		<a href="<%= request.getContextPath() %>/logout.jsp">로그아웃</a>
+		<hr>
+			
+	</div>
 <h1>배우 상세페이지 </h1>
 <table border = "1">
 <tr>	
@@ -102,11 +117,13 @@
 <% } %>
 
 </table>
+<br>
   <% if (currentPage > 1) { %>
     <a href="/sakila/db0326/actorOne.jsp?currentPage=<%= currentPage - 1 %>&filmId=<%=filmId%>&actorId=<%=actorId%>">이전</a>
 <% } %>
 
-[<%=currentPage%>]
+<a><%=currentPage%></a>
+
 
 <% if (currentPage < lastPage) { %>
     <a href="/sakila/db0326/actorOne.jsp?currentPage=<%= currentPage + 1 %>&filmId=<%=filmId%>&actorId=<%=actorId%>">다음</a>

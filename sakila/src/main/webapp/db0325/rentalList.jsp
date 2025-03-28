@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*, java.util.*" %>
+<%
+Integer staffId =  (Integer)(session.getAttribute("loginStaff"));
+
+if(staffId == null){
+	 response.sendRedirect("/sakila/loginForm.jsp");
+}
+
+%>
 
 <%
 int currentPage = 1;
@@ -82,9 +90,16 @@ while (rs.next()) {
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet"  type="text/css"href="/sakila/style.css">
     <title>대여 목록</title>
 </head>
 <body>
+	<div>
+		 <%=staffId%>님 반갑습니다.
+		 <a href="<%= request.getContextPath() %>/logout.jsp">로그아웃</a>
+		 <hr>
+			
+	</div>
 <h1>Rental List</h1>
 
 <form  action="/sakila/db0325/rentalList.jsp">
@@ -126,6 +141,7 @@ while (rs.next()) {
     }
 %>
 </table>
+<br>
 
 <div>
 <% if (currentPage > 1) { %>
@@ -135,6 +151,7 @@ while (rs.next()) {
 <% if (currentPage < lastPage) { %>
     <a href="/sakila/db0325/rentalList.jsp?currentPage=<%= currentPage + 1 %>&storeId=<%= storeId %>&searchWord=<%= searchWord != null ? searchWord : "" %>">다음</a>
 <% } %>
+	<a href="/sakila/index.jsp">목록선택</a>
 </div>
 
 </body>

@@ -2,6 +2,15 @@
 <%@ page import="java.util.*" %>
 <%@ page import="java.sql.*" %>
 <%
+Integer staffId =  (Integer)(session.getAttribute("loginStaff"));
+
+if(staffId == null){
+	 response.sendRedirect("/sakila/loginForm.jsp");
+}
+
+%>
+
+<%
 	int currentPage = 1; // 현재페이지
 	if (request.getParameter("currentPage")!=null){
 		currentPage = Integer.parseInt(request.getParameter("currentPage")); 
@@ -85,10 +94,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet"  type="text/css"href="/sakila/style.css">
 <title>InventoryList</title>
 <h1>인벤토리 리스트 </h1>
 </head>
 <body>
+	<div>
+		<%=staffId%>님 반갑습니다.
+		<a href="<%= request.getContextPath() %>/logout.jsp">로그아웃</a>
+		<hr>
+			
+	</div>
+	
 <table border="1">
 <tr>
 	<th>보관번호</th>
@@ -118,10 +135,6 @@
 
 
 
-
-
-
-
 <%
 int firstPage = (currentPage/10)*10+1;
 if (currentPage % 10 == 0) {
@@ -133,6 +146,8 @@ if(endPage > lastPage ){
 }
 %>
 </table>
+<br>
+
 <%
 	 if (firstPage > 10){ 
 %>

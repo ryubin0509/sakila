@@ -1,0 +1,151 @@
+/* 기본 스타일 설정 */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: #f0f0f0; /* 조금 더 어두운 밝은 회색 배경 */
+  color: #333; /* 텍스트 기본 색상 */
+  line-height: 1.6;
+}
+
+/* 로그인 폼을 화면 중앙에 배치 */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;  /* 화면의 80% 높이만 사용 */
+  margin-top: 50px;  /* 화면 상단에서 약간 떨어지게 설정 */
+}
+
+
+/* 제목 스타일 */
+h1 {
+  color: #222; /* 어두운 회색 텍스트 */
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+ol li {
+    margin-bottom: 20px; /* 각 리스트 항목 간의 간격을 10px로 설정 */
+}
+
+/* div 박스 스타일 */
+div {
+  background-color: #fff; /* 화이트 박스 */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+  margin-bottom: 30px;
+}
+
+/* 링크 스타일 */
+a {
+  color: #007BFF; /* 파란색 링크 */
+  text-decoration: none;
+  padding: 8px 8px;
+  border: 1px solid #007BFF;
+  border-radius: 5px;
+  margin-right: 15px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+/* 링크 hover 스타일 */
+a:hover {
+  background-color: #007BFF;
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+/* 폼 스타일 */
+form {
+  margin-bottom: 30px;
+}
+
+form select, form input, form button {
+  padding: 8px 12px;
+  margin-right: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc; /* 부드러운 경계선 */
+}
+
+form button {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+/* 테이블 스타일 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th, table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+table th {
+  background-color: #007BFF;
+  color: white;
+  font-size: 1rem;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9; /* 회색의 짝수 행 */
+}
+
+table tr:hover {
+  background-color: #e1e1e1; /* 마우스를 올렸을 때의 배경 색상 */
+}
+
+table td {
+  font-size: 0.9rem;
+  color: #555; /* 어두운 회색 텍스트 */
+}
+
+/* 페이지네이션 스타일 */
+div a {
+  color: #007BFF;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #007BFF;
+  border-radius: 4px;
+  margin: 0 5px;
+}
+
+div a:hover {
+  background-color: #007BFF;
+  color: white;
+}
+
+/* 작은 화면에 대한 반응형 디자인 */
+@media (max-width: 600px) {
+  body {
+    padding: 15px;
+  }
+
+  div {
+    padding: 15px;
+  }
+
+  form select, form input, form button {
+    padding: 6px 10px;
+  }
+
+  table th, table td {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
+}
