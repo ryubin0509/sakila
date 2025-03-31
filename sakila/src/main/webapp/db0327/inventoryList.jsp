@@ -1,3 +1,4 @@
+<%@page import="org.apache.naming.HandlerRef"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 <%@ page import="java.sql.*" %>
@@ -52,7 +53,7 @@ if(staffId == null){
 	System.out.println("전체 카운터의 수:"+ total); 
 	lastPage = (int)Math.ceil((double)total/rowPerPage);
 	
-	String resultSql = " SELECT t1.inventory_id, t1.title, t2.isRental "
+	String resultSql = " SELECT t1.inventory_id, t1.title, t2.isRental, t2.rental_date rentalDate "
 					 + " FROM " 
 			   		 + " (SELECT i.inventory_id, f.title "
 			   		 + " FROM inventory i INNER JOIN film f "
@@ -82,7 +83,8 @@ if(staffId == null){
 	map.put("inventoryid", resultRs.getInt("inventory_id"));
 	map.put("title", resultRs.getString("title"));
 	map.put("isRental", resultRs.getString("isRental"));
-		
+	map.put("rentalDate", resultRs.getString("rentalDate"));
+	
 	list.add(map);	
 		
 		
@@ -112,6 +114,7 @@ if(staffId == null){
 	<th>제목</th>
 	<th>대여가능여부</th>
 	<th>대여링크</th>
+	<th>대여날짜</th>
 </tr>
 
 <%for(HashMap<String,Object> map : list){  %>
@@ -123,11 +126,17 @@ if(staffId == null){
 	<% 
 		if("대여가능".equals(map.get("isRental"))){
 	%>
-		<a href="/sakila/db0327/rentalPage.jsp?inventoryId=<%= map.get("inventoryid") %>">대여하기</a>
+		<a href="/sakila/db0327/insertRentalForm.jsp?inventoryId=<%= map.get("inventoryid") %>">대여하기</a>
 	<% 
+	} else{
+	%>
+	<a href="/sakila/db0327/rentalPage.jsp">반납하기</a> 
+	<%
 	}
 	%>
+	
 	</td>
+	<td> <%=map.get("rentalDate")%></td>
 <% 	
 } 
 %>
